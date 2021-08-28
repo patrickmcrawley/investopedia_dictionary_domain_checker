@@ -1,9 +1,11 @@
 from ratelimit import limits
 import requests
 import json
+from random import randint
+import csv
 
 '''Your GoDaddy API Key. It's free with a Godaddy account. You get 60 requests/minute.'''
-f = open('keys.json')
+f = open('data/keys.json')
 KEYS = json.load(f)
 API_KEY = KEYS['key']
 SECRET = KEYS['secret']
@@ -24,5 +26,10 @@ def checker(domains):
         data = resp.json()
         if data['available']:
             avail.append(x)
-    return avail
 
+    filenum = randint(1, 999)
+    with open(f'results/results_{filenum}.csv', 'w') as f:
+        write = csv.writer(f)
+        write.writerow(avail)
+
+    return avail
