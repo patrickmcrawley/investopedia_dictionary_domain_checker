@@ -4,12 +4,12 @@ import pickle
 import re
 
 tld_list = []
-with open('results.csv', 'r') as csv_file:
+with open('data/results.csv', 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:
         tld_list.append(row[0])
 
-pickle_in = open('terms.pickle', 'rb')
+pickle_in = open('data/terms.pickle', 'rb')
 terms_list = pickle.load(pickle_in)
 
 
@@ -27,6 +27,6 @@ for x in tld_list:
         domains.append(domain)
 
 
-pickle_out = open('domains.pickle', 'wb')
+pickle_out = open('data/domains.pickle', 'wb')
 pickle.dump(domains, pickle_out)
 pickle_out.close()

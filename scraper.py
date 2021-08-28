@@ -23,6 +23,6 @@ for x in stripped_links:
         term_list.append(term)
 
 
-pickle_out = open("terms.pickle", 'wb')
+pickle_out = open("data/terms.pickle", 'wb')
 pickle.dump(term_list, pickle_out)
 pickle_out.close()
