@@ -12,10 +12,6 @@ with open('results.csv', 'r') as csv_file:
 pickle_in = open('terms.pickle', 'rb')
 terms_list = pickle.load(pickle_in)
 
-illegal = r'''`~!@#$%^&*()_+={[}]|\;:'",<.>/?'''
-illegal_list = []
-for x in illegal:
-    illegal_list.append(x)
 
 cleaned_terms = []
 for x in terms_list:
@@ -23,12 +19,12 @@ for x in terms_list:
     cleaned = cleaned.lower()
     cleaned_terms.append(cleaned)
 
+
 domains = []
 for x in tld_list:
     for y in cleaned_terms:
         domain = y + x
         domains.append(domain)
-
 
 
 pickle_out = open('domains.pickle', 'wb')

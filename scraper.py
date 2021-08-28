@@ -8,7 +8,6 @@ soup = BeautifulSoup(url.content, 'lxml')
 term_links = soup.findAll('a', text=re.compile('See complete list of'))
 
 stripped_links = []
-
 for x in term_links:
     link = x.get('href')
     stripped_links.append(link)
@@ -22,8 +21,6 @@ for x in stripped_links:
     for y in linktext:
         term = y.text
         term_list.append(term)
-
-print(term_list)
 
 
 pickle_out = open("terms.pickle", 'wb')

@@ -12,8 +12,6 @@ SECRET = KEYS['secret']
 ONE_MINUTE = 60
 CALLS = 60
 
-testlist = ['google.com', 'fitz.city', 'financewriter12.io', 'microsoft.com', 'ny.city', 'sdaofsdsdf.io']
-
 '''We use the @limits decorator from the --ratelimit-- package to rate limit our calls to the API.
 The --calls-- argument is the max number of calls per --period--'''
 @limits(calls=CALLS, period=ONE_MINUTE)
@@ -26,7 +24,5 @@ def checker(domains):
         data = resp.json()
         if data['available']:
             avail.append(x)
-        print(data)
     return avail
 
-print(checker(testlist))
